@@ -1,0 +1,208 @@
+.Contenido{
+max-width: 100%;
+width: 100%;
+height: fit-content;
+position: absolute;
+display: inline-block;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.select2-container--default .select2-results__option--selected {
+    background-color: #000000 !important;
+    color: #fff !important;
+}
+.Contenido_Union{
+    margin-left: 10%;
+    width: 80%;
+    margin-right: 10%;
+    display: inline-block;
+    position: relative;
+    top: 13em;
+    height: 20em;
+}
+.card{
+    
+    width: 20%;
+    margin-top: .1em;
+    margin-left: 3em;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    outline: 1px solid #000000;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+.card_unselect{
+    width: 20%;
+    margin-top: .1em;
+    margin-left: 3em;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    outline: 1px solid #000000;
+    margin-bottom: 1em;
+    display: none;
+}
+.card_unselect_carrusel{
+    width: 20%;
+    margin-top: .1em;
+    margin-left: 3em;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    outline: 1px solid #000000;
+    margin-bottom: 1em;
+    display: none;
+}
+.card p ,.card_unselect p,.card_unselect_carrusel p{
+    text-align: center;
+    font-size: 1.3em;
+    margin: 0;
+}
+.card ul, .card_unselect ul, .card_unselect_carrusel ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.card ul li,.card_unselect ul li,.card_unselect_carrusel ul li {
+    outline: 1px solid #000000;
+    background-color: #ffffff;
+    text-align: start;
+}
+.select2-container .select2-selection--multiple {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 100px;
+    overflow-y: scroll;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.button_trash{
+    outline: 2px solid  rgb(252, 51, 51);
+    background-color: rgb(250, 39, 39);
+    box-shadow: .5px .5px 1px 3px rgb(255, 0, 0);
+
+}
+
+.button_trash:hover{
+    background-color:  rgb(255, 0, 0);
+    outline: .2px solid rgb(255, 0, 0);
+    box-shadow: .5px .5px 1px 3px rgb(255, 0, 0);
+    cursor: pointer;
+}
+.Button_Enviar{
+    position: absolute;
+    top: 35em;
+    left: 39em;
+}
+.Button_Enviar button{
+    height: 2em;
+    width: 8em;
+  border: none;
+  outline: 2px solid  rgb(0, 255, 21);
+    background-color: rgb(0, 255, 21);
+    border-radius: 5%;
+    box-shadow: 1px 1px 1px 3px rgb(0, 255, 21);
+    cursor: pointer;
+
+}
+.button_copy{
+    border: none;
+    outline: 1px solid #000000;
+    background-color: #f856dd;
+    width: 100%;
+}
+
+.button_copy:hover{
+    background-color: #ff00d4;
+
+}
+.button_paste{
+    border: none;
+    outline: 1px solid #000000;
+    background-color: rgb(74, 245, 89);
+    width: 100%;
+}
+.button_paste:hover{
+    background-color: rgb(0, 255, 21);
+
+}
+input{
+    position: relative;
+   bottom:  .2em;
+   left: .3em;
+    width: 1.5em;
+    height: 1em;
+    border: none;
+    outline: 1px solid #000000;
+}
+.div_actividad{
+    display: none;
+    border: 1px solid #000000;
+    border-radius: 0% 5% 5% 5%;
+    width: 14em;
+    height: 10em;
+}
+.div_actividad div{
+    border:1px solid #000000;
+    text-align: start;
+}
+.div_list:hover .div_actividad{
+    position: absolute;
+    display: inline-block;
+    background-color: #fff;
+    color: #000000;
+    font-size: medium;
+    text-align: end;
+    z-index: 1;
+}
+
+.button_left{
+position: absolute;
+left: 2%;
+top: 18em;
+}
+.button_right{
+position: absolute;
+left: 95%;
+top: 18em;
+}
+.button_left:hover,.button_right:hover{
+    color:  rgb(74, 245, 89);
+}
+.search{
+    position: absolute;
+    top: 13em;
+    left: 28%;
+    width: 40%;
+    height: 2em;
+    border-radius: 3%;
+    border: none;
+    outline: 1px solid #000000;
+    box-shadow: 1px 1px 1px 1px #000000;
+padding-left: 2em;
+}
+.search:hover{
+    outline: 1px solid #ff00d4;
+}
+.titulos p{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+label{
+    position: absolute;
+    top: 11.1em;
+    left: 28.5%;
+    z-index: 1;
+}
+
+.Sin_filtros{
+    text-align: center;
+    font-size: x-large    ;
+    font-weight: 900;
+}
+
