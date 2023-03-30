@@ -384,7 +384,6 @@ search.addEventListener("input",(e)=>{
         p.innerHTML = "";
         cont_filtro = 1;
         for (let i = 0; i < searchs__ids_actuales.length; i++) {
-            console.log(searchs__ids_actuales[i]);
                 if (document.getElementById(searchs__ids_actuales[i]).classList.contains('card_unselect_carrusel'))
                  {
                     document.getElementById(searchs__ids_actuales[i]).classList.remove("card_unselect_carrusel");
@@ -527,11 +526,11 @@ button_right.addEventListener("click",(e)=>{
 
                 array_elements_ids_actuales.push(foo[i].id);
                     if (cont == 0) {
-
-                        for (let d = foo[i].id-1; d > foo[i].id -5; d--) {
-
-                            array_elements_ids.push(d);
-                        }
+                        let previos1 = foo[i].previousElementSibling.id;
+                        let previos2 =  foo[i].previousElementSibling.previousElementSibling.id;
+                        let previos3 =  foo[i].previousElementSibling.previousElementSibling.previousElementSibling.id;
+                        let previos4 =  foo[i].previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.id;
+                        array_elements_ids.push(previos1,previos2,previos3,previos4);
                         cont= 1;
                     }
             }
@@ -544,6 +543,7 @@ button_right.addEventListener("click",(e)=>{
 
     }
     for (let i = 0; i < array_elements_ids.length; i++) {
+        console.log(array_elements_ids[i]);
         document.getElementById(array_elements_ids[i]).classList.add(["card"]); 
         document.getElementById(array_elements_ids[i]).classList.remove(["card_unselect_carrusel"]); 
         
