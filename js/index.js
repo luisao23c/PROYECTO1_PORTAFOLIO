@@ -1,4 +1,4 @@
-let empleados = ["Miguel Angel","Miguel Salazar","Jose Jimenez","Alan Mazario","Ricardo Alonzo","Vicente Hernandez","Eduardo Herrera","Orlando Belmontes","Cristian Zaragosa","Edgar Perez","Edson Gonzales"];
+let empleados = ["Miguel Angel","Miguel Salazar","Jose Jimenez","Alan Mazario","Ricardo Alonzo","Vicente Hernandez","Eduardo Herrera","Orlando Belmontes","Cristian Zaragosa","Edgar Perez","Edson Gonzales","Javier Gtz","Juan Perez","Patricia Sinnahi","Ricardo Alonzo","Marcos Rodriguez"];
 let herramientas =["Escalera de extension","Metricas","Pala","Martillo","Elotromartillo","Cincel","Matraca","Caja de Herramientas"]
 let actividades ={
         "LLaves y Dados":["LLave Mixta","LLave española","LLave Allen","LLave perica","LLave Stilson"],
@@ -12,6 +12,8 @@ let contenido_copiado =[];
 let condicion = 0;
 let card = 0;
 let guardar_elementos = "";
+let start_carrusel = 0;
+let elements_carrusel_pos = [];
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
 });
@@ -253,6 +255,8 @@ async function remove_item(e){
 let enviar = document.getElementById("enviar_peticiones");
 enviar.addEventListener("click",(e)=>{
     empleados_seleccionados = [];
+    elements_carrusel_pos = [];
+    start_carrusel = 0;
     $("#empleados").val('').trigger('change')
     $("#herramientas").val('').trigger('change')
     $("#actividades").val('').trigger('change')
@@ -444,25 +448,23 @@ search.addEventListener("input",(e)=>{
     }
 });
 let cont_move_right = 0;
-let cont_move_left = 0;
-let start_carrusel = 0;
-
-
-
-
-
+let button_left = document.getElementById("button_left");
+let button_right = document.getElementById("button_right");
 empleados_herramientas_select.addEventListener("DOMSubtreeModified",(e)=>{
-    cont_move_right = 0;
     let foo = document.querySelectorAll('.Contenido_Union > div');
+    
+    
+    if (elements_carrusel_pos.length==0)
+        {cont_move_right = 0;}
     for (let i = 0; i < foo.length; i++) {
-        if (i<=3) {
+        if (i<=3 && elements_carrusel_pos.length == 0) {
             if (foo[i].classList.contains("card_unselect_carrusel")) {
                 foo[i].classList.remove(["card_unselect_carrusel"]);                
             }
             foo[i].classList.add(["card"]);
 
         }
-        else{
+        else {
             if (foo[i].classList.contains("card_unselect_carrusel")) {
                 foo[i].classList.remove(["card_unselect_carrusel"]);                
             }
@@ -470,11 +472,72 @@ empleados_herramientas_select.addEventListener("DOMSubtreeModified",(e)=>{
 
         }
     }
+    if (elements_carrusel_pos.length>=3) {
+        for (let d = 0; d < elements_carrusel_pos.length; d++) {
+            if (document.getElementById(elements_carrusel_pos[d])) {
+                if (document.getElementById(elements_carrusel_pos[d]).classList.contains("card_unselect_carrusel")) {
+                    document.getElementById(elements_carrusel_pos[d]).classList.remove(["card_unselect_carrusel"]);                
+                }
+                document.getElementById(elements_carrusel_pos[d]).classList.add(["card"]);
+            }
+                
+            
+          
+        }
+}
+if (foo.length>=1 && foo.length<=4) {
+    cont_move_right = 0;
+    for (let i = 0; i < foo.length; i++) {
+        foo[i].classList.add("card");
+        if (foo[i].classList.contains("card_unselect_carrusel")) {
+            foo[i].classList.remove("card_unselect_carrusel");
+        }
+    }
+}
 
+
+if (foo.length>4) {
+    if (foo.length-4 <= cont_move_right)  {
+        cont_move_right -=4;
+        click_event = new CustomEvent('click');
+        btn_element = document.querySelector('#button_left');
+        btn_element.dispatchEvent(click_event);
+
+    }
+    
+    else{
+        let posicion_carrusel = foo.length;
+        if (foo.length % 4 != 0){
+            while (posicion_carrusel % 4 != 0) {
+                posicion_carrusel --;
+                console.log(posicion_carrusel);
+            }
+        }
+
+        for (let d = posicion_carrusel-4; d < posicion_carrusel; d++) {
+            document.getElementById(d).classList.remove("card_unselect_carrusel");
+            document.getElementById(d).classList.add("card");
+            
+        }
+    }
+//     if (foo.length % 4 == 0) {
+//         if (!document.getElementById(foo.length).classList.contains("card")) {
+//             cont_move_right = foo.length;
+//             for (let i = foo.length-4; i < foo.length; i++) {
+            
+//                 foo[i].classList.add("card");
+//                 if (foo[i].classList.contains("card_unselect_carrusel")) {
+//                     foo[i].classList.remove("card_unselect_carrusel");
+//                 }
+//             }      
+//         }
+      
+//  }
+
+}
 
 });
-let button_left = document.getElementById("button_left");
-let button_right = document.getElementById("button_right");
+
 button_left.addEventListener("click",(e)=>{
     let foo = document.querySelectorAll('.Contenido_Union > div');
   
@@ -496,6 +559,9 @@ button_left.addEventListener("click",(e)=>{
                     foo[i].classList.remove(["card_unselect_carrusel"]);                
                 }
                 foo[i].classList.add(["card"]);
+                if (elements_carrusel_pos.length<4) {
+                    elements_carrusel_pos.push(foo[i].id);
+                }
             }
             else{
                 foo[i].classList.remove(["card"]);                
@@ -507,7 +573,7 @@ button_left.addEventListener("click",(e)=>{
         
            
         }
-    }
+    } 
    
 });
 button_right.addEventListener("click",(e)=>{
@@ -543,7 +609,6 @@ button_right.addEventListener("click",(e)=>{
 
     }
     for (let i = 0; i < array_elements_ids.length; i++) {
-        console.log(array_elements_ids[i]);
         document.getElementById(array_elements_ids[i]).classList.add(["card"]); 
         document.getElementById(array_elements_ids[i]).classList.remove(["card_unselect_carrusel"]); 
         

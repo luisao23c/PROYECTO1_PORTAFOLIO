@@ -27,23 +27,17 @@ display: inline-block;
     
     width: 20%;
     margin-top: .1em;
-    margin-left: 3em;
+    margin-left: 2em;
     height: fit-content;
     background-color: rgb(255, 255, 255);
     outline: 1px solid #000000;
     margin-bottom: 1em;
     display: inline-block;
 }
-.card_unselect{
-    width: 20%;
-    margin-top: .1em;
-    margin-left: 3em;
-    height: fit-content;
-    background-color: rgb(255, 255, 255);
-    outline: 1px solid #000000;
-    margin-bottom: 1em;
-    display: none;
+.card_search{
+
 }
+
 .card_unselect_carrusel{
     width: 20%;
     margin-top: .1em;
@@ -54,17 +48,17 @@ display: inline-block;
     margin-bottom: 1em;
     display: none;
 }
-.card p ,.card_unselect p,.card_unselect_carrusel p{
+.card p ,.card_unselect_carrusel p{
     text-align: center;
     font-size: 1.3em;
     margin: 0;
 }
-.card ul, .card_unselect ul, .card_unselect_carrusel ul{
+.card ul, .card_unselect_carrusel ul{
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.card ul li,.card_unselect ul li,.card_unselect_carrusel ul li {
+.card ul li,.card_unselect_carrusel ul li {
     outline: 1px solid #000000;
     background-color: #ffffff;
     text-align: start;
